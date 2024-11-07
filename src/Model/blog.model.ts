@@ -21,7 +21,7 @@ export default new class Database {
         return this.state.blog.find(blog => blog.id == id)
     }
     public async RemoveBlogByID(id: iBlog['id']): Promise<string>{
-        if(!this.GetBlogByID(id))return "notfund blog"
+        if(await !this.GetBlogByID(id))return "notfund blog"
         this.state.blog.forEach((blog , index) =>{
             if(blog.id == id ){
                 this.state.blog.splice(index , 1)
