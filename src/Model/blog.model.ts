@@ -17,4 +17,16 @@ export default new class Database {
     public async GetAllBlog(): Promise<iBlog[]>{
         return this.state.blog
     }
+    public async GetBlogByID(id: iBlog['id']): Promise<iBlog | undefined>{
+        return this.state.blog.find(blog => blog.id == id)
+    }
+    public async RemoveBlogByID(id: iBlog['id']): Promise<string>{
+        if(!this.GetBlogByID(id))return "notfund blog"
+        this.state.blog.forEach((blog , index) =>{
+            if(blog.id == id ){
+                this.state.blog.splice(index , 1)
+            }
+        });
+        return "remove Blog succsessfully"
+    }
 }
