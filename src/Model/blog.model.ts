@@ -6,7 +6,7 @@ export default new class Database {
             {id: 1 , title : "salam" , text: "man type script yad migiram"}
         ]
     }
-    public async NewData(data: NewBlog ): Promise<string>{
+    public async NewBlog(data: NewBlog ): Promise<string>{
         this.state.blog.push({
             id: this.state.blog.length + 1,
             title: data.text,
