@@ -1,4 +1,4 @@
-import { iBlog, IDatabase, NewBlog } from "../types/types"
+import { EditBlog, iBlog, IDatabase, NewBlog } from "../types/types"
 
 export default new class Database {
     private state: IDatabase = {
@@ -28,5 +28,12 @@ export default new class Database {
             }
         });
         return "remove Blog succsessfully"
+    }
+    public async EditBlog (id : iBlog['id'], newData:EditBlog) : Promise<string>{
+        if (!this.GetBlogByID(id)) return "not found blog";
+        this.state.blog.forEach((blog,index)=> {
+            this.state.blog[index] = Object.assign(blog , newData)
+        })
+        return 'update blog successfuly'
     }
 }
