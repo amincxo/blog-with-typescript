@@ -7,3 +7,5 @@ export interface iBlog {
 export interface IDatabase {
     blog: iBlog[]
 }
+export type NewBlog = Omit<iBlog, 'id' >
+export type EditBlog = Partial<NewBlog>
